@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Validation with Regex</title>
+    <style>
+      .error {
+        color: red;
+      }
+      div{
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        padding: 10px;
+        margin: 10px;
+        width: 200px;
+        background-color: lightslategray;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>Email validation</h1>
+      <code>const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; </code>
+    </div>
+    <div>
+        <h1>Phone validation</h1>
+        <code>const phonePattern = /^\d{10}$/; </code>
+    </div>
+    <div>
+        <h1>Password validation</h1>
+        <code>const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/; </code>
+    </div>
+
+    <h2>Registration Form</h2>
+    <form id="registrationForm" novalidate>
+      <label for="name">Name:</label><br />
+      <input type="text" id="name" required />
+      <span id="nameError" class="error"></span><br /><br />
+
+      <label for="email">Email:</label><br />
+      <input type="email" id="email" required />
+      <span id="emailError" class="error"></span><br /><br />
+
+      <label for="phone">Phone (10 digits):</label><br />
+      <input type="tel" id="phone" required />
+      <span id="phoneError" class="error"></span><br /><br />
+
+      <label for="password">Password:</label><br />
+      <input type="password" id="password" required />
+      <span id="passwordError" class="error"></span><br /><br />
+
+      <label for="confirmPassword">Confirm Password:</label><br />
+      <input type="password" id="confirmPassword" required />
+      <span id="confirmPasswordError" class="error"></span><br /><br />
+
+      <button type="submit">Register</button>
+    </form>
+
+    <script>
+      const form = document.getElementById("registrationForm");
+
+      form.addEventListener("submit", function (event) {
+        // Prevent default form submission
+        event.preventDefault();
+
+        // Clear previous error messages
+        document.getElementById("nameError").textContent = "";
+        document.getElementById("emailError").textContent = "";
+        document.getElementById("phoneError").textContent = "";
+        document.getElementById("passwordError").textContent = "";
+        document.getElementById("confirmPasswordError").textContent = "";
+
+        // Get input values
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+        const password = document.getElementById("password").value.trim();
+        const confirmPassword = document
+          .getElementById("confirmPassword")
+          .value.trim();
+
+        let isValid = true;
+
+        // Validate Name (not empty)
+        if (name === "") {
+          document.getElementById("nameError").textContent =
+            "Name is required.";
+          isValid = false;
+        }
+
+        // Validate Email with regex
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Basic email regex pattern
+        if (!emailPattern.test(email)) {
+          document.getElementById("emailError").textContent =
+            "Please enter a valid email.";
+          isValid = false;
+        }
+
+        // Validate Phone (10 digits) with regex
+        const phonePattern = /^\d{10}$/; // Matches exactly 10 digits
+        if (!phonePattern.test(phone)) {
+          document.getElementById("phoneError").textContent =
+            "Phone number must be 10 digits.";
+          isValid = false;
+        }
+
+        // Validate Password with regex
+        const passwordPattern =
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        // At least 8 characters, one uppercase, one lowercase, one number, one special character
+        if (!passwordPattern.test(password)) {
+          document.getElementById("passwordError").textContent =
+            "Password must be at least 8 characters long and include an uppercase letter, a lowercase letter, a number, and a special character.";
+          isValid = false;
+        }
+
+        // Confirm Password
+        if (password !== confirmPassword) {
+          document.getElementById("confirmPasswordError").textContent =
+            "Passwords do not match.";
+          isValid = false;
+        }
+
+        // Submit the form if valid
+        if (isValid) {
+          alert("Form submitted successfully!");
+          // You can also submit the form here using AJAX or redirect
+          // form.submit(); // Uncomment if you want to submit the form normally
+        }
+      });
+    </script>
+  </body>
+</html>

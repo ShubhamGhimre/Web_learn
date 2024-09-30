@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event handler</title>
+    <style>
+      section{
+        background-color: lightgray;
+        padding: 10px;
+        margin: 10px;
+        font-size: xx-large;
+      }
+      ul{
+        padding: 10px;
+        margin: 10px;
+        font-size: large;
+      }
+      h1{
+        padding: 10px;
+        margin: 10px;
+        font-size: 26px;
+      }
+      div{
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        margin: 10px;
+        width: 200px;
+      }
+      input{
+        padding: 10px;
+        margin: 10px;
+        width: 200px;
+      }
+      button{
+        padding: 10px;
+        margin: 10px;
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      Event handling in JavaScript refers to how a web page responds to user
+      interactions such as clicks, keypresses, form submissions, mouse
+      movements, etc. Event handlers are functions that are executed in response
+      to an event. They define what should happen when an event occurs. Event
+      handlers can be used to handle user input, validate form data, trigger
+      animations, and much more. In this article, we will explore how to use
+      event handlers in JavaScript to create interactive web pages.
+    </section>
+    <ul>
+      <li>
+        Event: A user action or occurrence (e.g., clicking a button, submitting
+        a form).
+      </li>
+      <li>
+        Event Target: The DOM element where the event happens (e.g., a button,
+        form, etc.).
+      </li>
+      <li>
+        Event Handler: A JavaScript function that is executed in response to the
+        event.
+      </li>
+      <li>
+        Event Listener: A mechanism that waits for the event to happen and then
+        calls the corresponding event handler.
+      </li>
+    </ul>
+    <h2>Event Handler Attributes On click</h2>
+    <div>
+      <h3>using Button</h3>
+      <button onclick="alert('Button clicked!')">Click Me</button>
+    </div>
+    <div>
+      <h3>using Dom event Handler</h3>
+
+      <button id="myButton">Click Me</button>
+
+      <script>
+        const button = document.getElementById("myButton");
+        button.onclick = function () {
+          alert("Button was clicked!");
+        };
+      </script>
+    </div>
+    <div>
+      <h3>using addEventListener</h3>
+      <button id="myButton">Click Me</button>
+
+      <script>
+        const button = document.getElementById("myButton");
+        button.addEventListener("click", function () {
+          alert("Button clicked using addEventListener!");
+        });
+      </script>
+    </div>
+
+    <h1>mouseover</h1>
+    <div>
+      <div
+        id="hoverDiv"
+        style="width: 200px; height: 100px; background-color: lightblue"
+      >
+        Hover over me!
+      </div>
+
+      <script>
+        const hoverDiv = document.getElementById("hoverDiv");
+
+        // Event handler for mouseover
+        hoverDiv.addEventListener("mouseover", function () {
+          hoverDiv.style.backgroundColor = "lightgreen"; // Change background color on mouseover
+        });
+
+        // Event handler for mouseout to revert the change
+        hoverDiv.addEventListener("mouseout", function () {
+          hoverDiv.style.backgroundColor = "lightblue"; // Change back when mouse leaves
+        });
+      </script>
+    </div>
+
+    <h1>Keydown</h1>
+    <div>
+      <input type="text" id="inputField" placeholder="Type something" />
+
+      <script>
+        const inputField = document.getElementById("inputField");
+
+        // Event handler for keydown
+        inputField.addEventListener("keydown", function (event) {
+          console.log("Key pressed: " + event.key); // Log the key that was pressed
+          if (event.key === "Enter") {
+            alert("You pressed Enter!");
+          }
+        });
+      </script>
+    </div>
+    <h1>Submit</h1>
+    <form id="myForm">
+      <input type="text" id="name" placeholder="Enter your name" />
+      <button type="submit">Submit</button>
+    </form>
+
+    <script>
+      const form = document.getElementById("myForm");
+
+      // Event handler for submit
+      form.addEventListener("submit", function (event) {
+        const nameInput = document.getElementById("name").value;
+
+        if (nameInput === "") {
+          event.preventDefault(); // Prevent form submission if the name field is empty
+          alert("Name cannot be empty!");
+        } else {
+          alert("Form submitted successfully!");
+        }
+      });
+    </script>
+  </body>
+</html>

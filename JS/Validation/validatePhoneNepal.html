@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Number Validation for Nepal</title>
+    <style>
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h2>Mobile Number Validation Form</h2>
+    <form id="mobileForm" novalidate>
+        <label for="mobile">Mobile Number:</label><br>
+        <input type="text" id="mobile" required>
+        <span id="mobileError" class="error"></span><br><br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        const form = document.getElementById("mobileForm");
+
+        form.addEventListener("submit", function(event) {
+            // Prevent default form submission
+            event.preventDefault();
+
+            // Clear previous error messages
+            document.getElementById("mobileError").textContent = "";
+
+            // Get input value
+            const mobile = document.getElementById("mobile").value.trim();
+
+            // Regular expression for Nepal mobile number
+            // const mobilePattern = /^\+977[-\s]?(\d{10}|\d{3}[-\s]?\d{7}|\d{2}[-\s]?\d{3}[-\s]?\d{5})$/;
+
+            const mobilePattern = /^\+977[-\s]?9[789]\d{8}$/;
+
+
+            // Validate Mobile Number
+            if (!mobilePattern.test(mobile)) {
+                document.getElementById("mobileError").textContent = "Please enter a valid mobile number (e.g., +977 9801234567).";
+            } else {
+                alert("Mobile number is valid!");
+                // Here you can proceed to submit the form or do any further processing
+                // form.submit(); // Uncomment to submit the form normally
+            }
+        });
+    </script>
+</body>
+</html>
