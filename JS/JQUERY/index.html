@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>jQuery Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <button id="btn">Click Me</button>
+    <p id="text">Hello, World!</p>
+
+    <!-- <script>
+        $(document).ready(function() {
+            $("#btn").click(function() {
+                $("#text").text("You clicked the button!");
+            });
+        });
+    </script> -->
+    <script>
+        const btn = document.getElementById("btn");
+        const text = document.getElementById("text") ;
+
+
+        btn.addEventListener("click" , function (event){
+            console.log("hello");
+            text.innerText("hi")
+        })
+
+    </script>
+</body>
+</html>
