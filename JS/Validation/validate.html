@@ -58,7 +58,7 @@
             }
 
             // Validate Email
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;  // Simple email regex pattern
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;  // Simple email regex pattern 
             if (!emailPattern.test(email)) {
                 document.getElementById("emailError").textContent = "Please enter a valid email.";
                 isValid = false;

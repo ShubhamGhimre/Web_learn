@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AJAX Example</title>
+</head>
+<body>
+  <h2>AJAX Example</h2>
+  <button onclick="loadData()">Click to Fetch Data</button>
+  <div id="result"></div>
+
+  <!-- <script>
+    function loadData() {
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", "data.json", true);
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          document.getElementById("result").innerHTML = xhr.responseText;
+        }
+      };
+      xhr.send();
+    }
+  </script> -->
+
+<script>
+    function loadData() {
+      fetch("data.json")
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById("result").innerHTML = 
+            "Name: " + data.name + "<br>" + "Age: " + data.age;
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
+  </script>
+</body>
+</html>

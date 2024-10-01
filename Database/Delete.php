@@ -1,9 +1,9 @@
 <?php
 // Update query
-$sql = "UPDATE users SET email='newemail@example.com' WHERE id=1";
+$sql = "DELETE FROM user WHERE id=1";
 
 if ($conn->query($sql) === TRUE) {
-    echo "Record updated successfully";
+    echo "Record deleted successfully";
 } else {
     echo "Error updating record: " . $conn->error;
 }

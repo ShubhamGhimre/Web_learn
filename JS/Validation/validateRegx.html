@@ -14,8 +14,14 @@
         flex-direction: column;
         padding: 10px;
         margin: 10px;
-        width: 200px;
+        width: 100%;
         background-color: lightslategray;
+      }
+      code{
+        background-color: black;
+        color: white;
+        width: 100%;
+        padding: 20px;
       }
     </style>
   </head>
@@ -26,7 +32,8 @@
     </div>
     <div>
         <h1>Phone validation</h1>
-        <code>const phonePattern = /^\d{10}$/; </code>
+        <code>General = /^\d{10}$/; </code>
+        <code> Nepal = /^+977[-\s]?9[789]\d[8]$/ </code>
     </div>
     <div>
         <h1>Password validation</h1>
@@ -36,23 +43,23 @@
     <h2>Registration Form</h2>
     <form id="registrationForm" novalidate>
       <label for="name">Name:</label><br />
-      <input type="text" id="name" required />
+      <input type="text" id="name" required /> <br>
       <span id="nameError" class="error"></span><br /><br />
 
       <label for="email">Email:</label><br />
-      <input type="email" id="email" required />
+      <input type="email" id="email" required /> <br>
       <span id="emailError" class="error"></span><br /><br />
 
       <label for="phone">Phone (10 digits):</label><br />
-      <input type="tel" id="phone" required />
+      <input type="tel" id="phone" required /> <br>
       <span id="phoneError" class="error"></span><br /><br />
 
       <label for="password">Password:</label><br />
-      <input type="password" id="password" required />
+      <input type="password" id="password" required /><br>
       <span id="passwordError" class="error"></span><br /><br />
 
       <label for="confirmPassword">Confirm Password:</label><br />
-      <input type="password" id="confirmPassword" required />
+      <input type="password" id="confirmPassword" required /><br>
       <span id="confirmPasswordError" class="error"></span><br /><br />
 
       <button type="submit">Register</button>

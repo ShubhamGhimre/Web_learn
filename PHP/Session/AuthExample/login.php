@@ -1,4 +1,5 @@
 <?php
+// start the session
 session_start();
 
 // Simulate user login
