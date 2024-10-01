@@ -1,0 +1,8 @@
+<!DOCTYPE person [
+  <!ELEMENT person (firstName, lastName, email, age)>
+  <!ELEMENT firstName (#PCDATA)>
+  <!ELEMENT lastName (#PCDATA)>
+  <!ELEMENT email (#PCDATA)>
+  <!ELEMENT age (#PCDATA)>
+  <!ATTLLIST person id ID #required>
+]>

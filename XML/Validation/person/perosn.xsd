@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <!-- Defining a simple element -->
+    <xs:element name="firstName" type="xs:string"/>
+    <xs:element name="lastName" type="xs:string"/>
+    <xs:element name="age" type="xs:integer"/>
+
+    <!-- Defining a complex element -->
+    <xs:element name="person">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="firstName"/>
+                <xs:element ref="lastName"/>
+                <xs:element ref="age"/>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:integer" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

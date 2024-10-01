@@ -9,6 +9,7 @@
           <tr bgcolor="#9acd32">
             <th>Author</th>
             <th>Title</th>
+            <th>genre</th>
             <th>Price</th>
           </tr>
           <!-- Match each book element -->
@@ -16,6 +17,7 @@
             <tr>
               <td><xsl:value-of select="author"/></td>
               <td><xsl:value-of select="title"/></td>
+              <td><xsl:value-of select="genre"></td>
               <td><xsl:value-of select="price"/></td>
             </tr>
           </xsl:for-each>
