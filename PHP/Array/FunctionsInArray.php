@@ -7,7 +7,10 @@ $colors = array("Red", "Green", "Blue");
 
 $arr = [10, 20, 30]; // Short syntax for indexed array
 
-// Associative array
+// Associative array 
+
+//  "name" => "John"
+//   key   => value
 $person = array("name" => "John", "age" => 30, "city" => "New York");
 
 // Multidimensional array
